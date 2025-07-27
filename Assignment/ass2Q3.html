@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Gradient Rectangle</title>
+</head>
+<body>
+
+    <h2>Gradient Rectangle with Area</h2>
+
+    
+    <label for="gradientSelect">Choose Gradient:</label>
+    <select id="gradientSelect">
+        <option value="blue-green">Blue - Green</option>
+        <option value="red-yellow">Red - Yellow</option>
+        <option value="purple-pink">Purple - Pink</option>
+    </select>
+
+    <br><br>
+
+    
+    <canvas id="myCanvas" width="400" height="200" style="border:1px solid #ccc;"></canvas>
+
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        const gradientSelect = document.getElementById("gradientSelect");
+
+        const rectX = 20, rectY = 20, rectWidth = 150, rectHeight = 100;
+
+        function drawRectangle(color1, color2) {
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+            const gradient = ctx.createLinearGradient(rectX, rectY, rectX + rectWidth, rectY);
+            gradient.addColorStop(0, color1);
+            gradient.addColorStop(1, color2);
+
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
+
+
+            ctx.fillStyle = "white";
+            ctx.font = "16px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(`Area = ${rectWidth} x ${rectHeight}`, rectX + rectWidth / 2, rectY + rectHeight / 2);
+        }
+
+
+        drawRectangle("blue", "green");
+
+
+        gradientSelect.addEventListener("change", function () {
+            const value = this.value;
+            let color1, color2;
+            if (value === "blue-green") {
+                color1 = "blue"; color2 = "green";
+            } else if (value === "red-yellow") {
+                color1 = "red"; color2 = "yellow";
+            } else if (value === "purple-pink") {
+                color1 = "purple"; color2 = "pink";
+            }
+            drawRectangle(color1, color2);
+        });
+    </script>
+
+</body>
+</html>

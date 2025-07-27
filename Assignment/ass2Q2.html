@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workshop Registration</title>
+    <style>
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Workshop Registration Form</h2>
+
+    <form>
+        
+        <label>
+            Full Name:
+            <input type="text" name="fullname" required>
+        </label>
+
+       
+        <label>
+            Email ID:
+            <input type="email" name="email" required>
+        </label>
+
+        
+        <label>Gender:</label>
+        <label><input type="radio" name="gender" value="Male"> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+
+       
+        <label>
+            Preferred Workshop:
+            <select name="workshop" required>
+                <option value="">--Select--</option>
+                <option value="AI">AI</option>
+                <option value="Web Development">Web Development</option>
+                <option value="IoT">IoT</option>
+            </select>
+        </label>
+
+        
+        <label>
+            Upload Resume (PDF only):
+            <input type="file" name="resume" accept=".pdf" required>
+        </label>
+
+       
+        <label>
+            <input type="checkbox" id="agreeCheckbox"> I agree to the terms and conditions
+        </label>
+
+       
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+    </form>
+
+    <script>
+        const checkbox = document.getElementById('agreeCheckbox');
+        const submitBtn = document.getElementById('submitBtn');
+
+        checkbox.addEventListener('change', function () {
+            submitBtn.disabled = !this.checked;
+        });
+    </script>
+
+</body>
+</html>

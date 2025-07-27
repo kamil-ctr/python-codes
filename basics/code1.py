@@ -1,0 +1,7 @@
+print("enter two numbwrs seprated by a comma")
+a=input()
+b,c=a.split(",")
+e=float(b)
+f=float(c)
+d=(e,f)
+print(e+f)
